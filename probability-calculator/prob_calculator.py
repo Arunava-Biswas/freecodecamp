@@ -4,7 +4,7 @@ import random
 
 class Hat:
     def __init__(self, **kwargs):
-
+        # Creating a blank list and fill it with the values passed by the instance
         self.contents = []
         for k, v in kwargs.items():
             for i in range(v):
@@ -33,6 +33,7 @@ class Hat:
         return drawn
 
 
+# Creating function for the experiment
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     expected_count = 0
     for i in range(num_experiments):
