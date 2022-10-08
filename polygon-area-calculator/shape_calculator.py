@@ -4,7 +4,7 @@ class Rectangle:
         self.height = height
 
     def __repr__(self):
-        return "Rectangle(width={}, height={})".format(self.width, self.height)
+        return f"Rectangle(width={self.width}, height={self.height})"
 
     def set_width(self, width):
         self.width = width

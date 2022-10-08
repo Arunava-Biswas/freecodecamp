@@ -67,7 +67,7 @@ class UnitTests(unittest.TestCase):
         message2 = 'Expected diagonal of rectangle to be 7.0710678118654755'
         self.assertEqual(actual, expected, message2)
 
-    def test_set_atributes(self):
+    def test_set_attributes(self):
         self.rect.set_width(7)
         self.rect.set_height(8)
         self.sq.set_side(2)
@@ -93,7 +93,7 @@ class UnitTests(unittest.TestCase):
         message = 'Expected rectangle picture to be different.'
         self.assertEqual(actual, expected, message)
 
-    def test_squaree_picture(self):
+    def test_square_picture(self):
         self.sq.set_side(2)
         actual = self.sq.get_picture()
         expected = "**\n**\n"
