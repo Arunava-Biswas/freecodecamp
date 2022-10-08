@@ -22,5 +22,4 @@ print(add_time("6:30 PM", "205:12"))
 print("\n")
 
 
-# Run unit tests automatically
 main(module='test_module', exit=False)

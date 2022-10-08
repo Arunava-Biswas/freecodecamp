@@ -1,10 +1,11 @@
-def add_time(start, duration, day_of_week=None):
-    DAYS_OF_WEEK = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+# Creating the function
+def add_time(start, duration, day=None):
+    week_days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
     # Convert to 24 hour time and integers
     start_hour, start_minute = start.split()[0].split(":")
     period = start.split()[1]
-    if (period == "PM"):
+    if period == "PM":
         start_hour = int(start_hour) + 12
     else:
         start_hour = int(start_hour)
@@ -19,13 +20,13 @@ def add_time(start, duration, day_of_week=None):
     end_hour = start_hour + duration_hour
     end_day = 0
 
-    # Convert to proper number of days, hours, minutes
+    # Convert to number of days, hours, minutes
     end_hour = end_hour + (end_minute // 60)
     end_minute = end_minute % 60
     end_day = end_day + (end_hour // 24)
     end_hour = end_hour % 24
 
-    # Convert hour back to 12 hour time
+    # Convert hour back to 12-hour format
     if end_hour > 12:
         end_hour = end_hour - 12
         end_period = 'PM'
@@ -37,14 +38,14 @@ def add_time(start, duration, day_of_week=None):
     else:
         end_period = 'AM'
 
-    # Format and return the new time
+    # Creating the new time in a formatted way
     new_time = "{}:{:02d} {}".format(end_hour, end_minute, end_period)
 
-    # If needed, calculate the ending day of the week
-    if day_of_week:
-        new_time += ", " + DAYS_OF_WEEK[(DAYS_OF_WEEK.index(day_of_week.lower()) + end_day) % 7].title()
+    # Calculating the day
+    if day:
+        new_time += ", " + week_days[(week_days.index(day.lower()) + end_day) % 7].title()
 
-    # If end_day > 0, add the number of days
+    # Adding number of days
     if end_day > 0:
         if end_day == 1:
             new_time += " (next day)"
