@@ -9,11 +9,13 @@ class Category:
         ledger = ""
         for item in self.ledger:
             # format description and amount
-            line_description = "{:<23}".format(item["description"])
-            line_amount = "{:>7.2f}".format(item["amount"])
+            line_description = f"{item['description']:<23}"
+            line_amount = f"{item['amount']:>7.2f}"
+
             # Truncate ledger description and amount to 23 and 7 characters respectively
-            ledger += "{}{}\n".format(line_description[:23], line_amount[:7])
-        total = "Total: {:.2f}".format(self.__balance)
+            ledger += f"{line_description[:23]}{line_amount[:7]}\n"
+
+        total = f"Total: {self.__balance:.2f}"
         return header + ledger + total
 
     def deposit(self, amount, description=""):
@@ -32,8 +34,8 @@ class Category:
         return self.__balance
 
     def transfer(self, amount, category_instance):
-        if self.withdraw(amount, "Transfer to {}".format(category_instance.description)):
-            category_instance.deposit(amount, "Transfer from {}".format(self.description))
+        if self.withdraw(amount, f"Transfer to {category_instance.description}"):
+            category_instance.deposit(amount, f"Transfer from {self.description}")
             return True
         else:
             return False
@@ -48,9 +50,9 @@ class Category:
 def create_spend_chart(categories):
     spent_amounts = []
     # Get total spent in each category
-    for category in categories:
+    for cat in categories:
         spent = 0
-        for item in category.ledger:
+        for item in cat.ledger:
             if item["amount"] < 0:
                 spent += abs(item["amount"])
         spent_amounts.append(round(spent, 2))

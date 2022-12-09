@@ -16,11 +16,11 @@ def arithmetic_arranger(problems, solve=False):
         if operator not in "+-":
             return "Error: Operator must be '+' or '-'."
 
-        # Check that input is comprised of digits
+        # Check the number of input digits
         if not operand1.isdigit() or not operand2.isdigit():
             return "Error: Numbers must only contain digits."
 
-        # Check that numbers are 4 digits or less
+        # Check that numbers are of equal to or less than 4 digits
         if len(operand1) > 4 or len(operand2) > 4:
             return "Error: Numbers cannot be more than four digits."
 
